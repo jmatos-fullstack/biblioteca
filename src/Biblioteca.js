@@ -1,13 +1,15 @@
 //import { Usuario } from "./Usuario.js";
 
 export class Biblioteca {
-    #usuarios = [];
-    #livros = [];
+    usuarios = [];
+    livros = [];
     constructor() {
 
     }
 
     cadastrarUsuario(usuario) {
-        this.#usuarios.push(usuario);
+        this.usuarios.push(usuario);
+        //return this.usuarios;
     }
+    
 }
