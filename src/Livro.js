@@ -2,6 +2,7 @@ export class Livro {
     titulo = '';
     autor = '';
     disponibilidade = true;
+    codigo = 0;
 
     constructor(titulo, autor, disponibilidade) {
         if (!titulo || 

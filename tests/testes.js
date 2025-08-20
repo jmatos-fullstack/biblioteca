@@ -2,17 +2,14 @@ import { Usuario } from "../src/Usuario.js";
 import { Livro } from "../src/Livro.js";
 
 export function cadastrarUsuarios(biblioteca) {
-    const usuario1 = new Usuario(
-        "Julio", 
-        "A001", ['Livro 1', 'Livro 2', 'Livro 3']
-    );
-    const usuario2 = new Usuario("Ana", "A002", ['Livro 7']);
-    biblioteca.cadastrarUsuario(usuario1);
+    const usuario = new Usuario("Julio", "Aluno");
+    biblioteca.cadastrarUsuario(usuario);
+
+    const usuario2 = new Usuario("Martha", "Professor");
     biblioteca.cadastrarUsuario(usuario2);
 }
 
 export function cadastrarLivros(biblioteca) {
-
    const titulos = [
         "A Menina que Roubava Livros", "Dom Casmurro", "1984", "O Pequeno Príncipe", "Orgulho e Preconceito",
         "O Senhor dos Anéis", "Harry Potter e a Pedra Filosofal", "O Hobbit", "Cem Anos de Solidão", "O Apanhador no Campo de Centeio",
