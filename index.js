@@ -1,13 +1,18 @@
 import { Usuario } from "./src/Usuario.js";
 import { Biblioteca } from "./src/Biblioteca.js";
+
 import {
+    cadastrarLivros,
     cadastrarUsuarios
 } from "./tests/testes.js";
 
 
 const biblioteca = new Biblioteca();
 
+cadastrarLivros(biblioteca);
 cadastrarUsuarios(biblioteca);
+console.log(biblioteca);
+
 
 
 

@@ -5,7 +5,8 @@ export class Biblioteca {
     #livros = [];
     #sequencialUsuarios = 0;
     constructor() {
-
+        this.#usuarios = [];
+        this.#livros = [];
     }
 
     listarUsuarios() {
@@ -14,7 +15,10 @@ export class Biblioteca {
 
     cadastrarUsuario(usuario) {
         this.#usuarios.push(usuario);
-        //return this.usuarios;
+    }
+
+    cadastrarLivro(livro) {
+        this.#livros.push(livro);
     }
     
 }
