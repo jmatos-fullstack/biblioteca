@@ -28,6 +28,33 @@ export class Biblioteca {
         this.#livros.push(livro);
     }
 
+    fazerEmprestimo(matriculaUsuario, codigoLivro) {
+        //console.log(this.#usuarios);
+        const usuario = this.#usuarios.find(usuario => usuario.matricula === matriculaUsuario);
+        console.log(usuario);
+        if (!usuario) {
+            throw new Error('Usuário não encontrado.');
+        }
+
+        const livro = this.#livros.find(livro => livro.codigo === codigoLivro);
+        console.log(livro);
+        if (!livro) {
+            throw new Error('Livro não encontrado.');
+        }
+
+        if (!livro.disponibilidade) {
+            throw new Error('Livro indisponível para empréstimo.');
+        }
+
+        // Atualiza a disponibilidade do livro
+        livro.disponibilidade = false;
+
+        // Adiciona o livro ao histórico do usuário
+        usuario.historico.push(`Empréstimo do livro: "${livro.titulo}" (Código: ${livro.codigo})`);
+        
+    }
+    
+    // --==-- Relatórios:
     gerarRelatorioUsuario() {
         const listaUsuario = this.listaUsuarios;
 

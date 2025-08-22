@@ -3,7 +3,8 @@ import { Biblioteca } from "./src/Biblioteca.js";
 
 import {
     cadastrarLivros,
-    cadastrarUsuarios
+    cadastrarUsuarios,
+    fazerEmprestimos
 } from "./tests/testes.js";
 
 const biblioteca = new Biblioteca();
@@ -11,9 +12,14 @@ const biblioteca = new Biblioteca();
 cadastrarLivros(biblioteca);    // tests/teste.js
 cadastrarUsuarios(biblioteca);  // tests/teste.js
 
-console.log(biblioteca);
+biblioteca.fazerEmprestimo('A00001', 1);
 
-const listaUsuario = biblioteca.listaUsuarios;
-console.log(listaUsuario);
+//fazerEmprestimos(biblioteca); // tests/teste.js
 
-biblioteca.gerarRelatorioUsuario();
+
+//console.log(biblioteca);
+//
+//const listaUsuario = biblioteca.listaUsuarios;
+//console.log(listaUsuario);
+//
+//biblioteca.gerarRelatorioUsuario();

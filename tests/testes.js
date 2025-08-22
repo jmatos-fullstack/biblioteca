@@ -2,11 +2,40 @@ import { Usuario } from "../src/Usuario.js";
 import { Livro } from "../src/Livro.js";
 
 export function cadastrarUsuarios(biblioteca) {
-    const usuario = new Usuario("Julio", "Aluno");
-    biblioteca.cadastrarUsuario(usuario);
+    // 30 alunos
+    const alunos = [
+        "Harry Potter", "Luke Skywalker", "Indiana Jones", "Marty McFly", "Forrest Gump",
+        "Tony Stark", "Peter Parker", "Bruce Wayne", "Clark Kent", "Leia Organa",
+        "Hermione Granger", "Ron Weasley", "Rocky Balboa", "James Bond", "Neo Anderson",
+        "Ellen Ripley", "Han Solo", "Bilbo Baggins", "Frodo Baggins", "Katniss Everdeen",
+        "Diana Prince", "Steve Rogers", "Natasha Romanoff", "Wade Wilson", "Logan Howlett",
+        "Peter Quill", "Gamora Zen", "Arthur Fleck", "Miles Morales", "Shuri Wakanda"
+    ];
+    alunos.forEach(nome => {
+        biblioteca.cadastrarUsuario(new Usuario(nome, "Aluno"));
+    });
 
-    const usuario2 = new Usuario("Martha", "Professor");
-    biblioteca.cadastrarUsuario(usuario2);
+    // 10 professores
+    const professores = [
+        "Morgan Freeman", "Ian McKellen", "Maggie Smith", "Anthony Hopkins", "Judi Dench",
+        "Michael Caine", "Helen Mirren", "Patrick Stewart", "Christopher Lee", "Jack Nicholson",
+        "Meryl Streep", "Robert De Niro", "Al Pacino", "Denzel Washington", "Clint Eastwood"
+    ];
+    professores.forEach(nome => {
+        biblioteca.cadastrarUsuario(new Usuario(nome, "Professor"));
+    });
+
+    // 5 bibliotecários
+    const bibliotecarios = [
+        "Freddie Mercury",
+        "Adele Adkins",
+        "Beyoncé Knowles",
+        "Elvis Presley",
+        "Michael Jackson"
+    ];
+    bibliotecarios.forEach(nome => {
+        biblioteca.cadastrarUsuario(new Usuario(nome, "Bibliotecário"));
+    });   
 }
 
 export function cadastrarLivros(biblioteca) {
@@ -34,4 +63,13 @@ export function cadastrarLivros(biblioteca) {
         const livro = new Livro(titulos[i], autores[i], true);
         biblioteca.cadastrarLivro(livro);
     }
+}
+
+export function fazerEmprestimos(biblioteca) {
+    // Exemplo de como fazer um empréstimo
+    const emprestimo1 = new Emprestimo('A0001', 1);
+    //biblioteca.fazerEmprestimo(emprestimo1);
+
+    // Aqui você pode adicionar mais lógicas para fazer outros empréstimos
+    // ou manipular o histórico de empréstimos dos usuários.
 }
