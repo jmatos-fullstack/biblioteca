@@ -1,21 +1,15 @@
-import { Usuario } from "./src/Usuario.js";
 import { Biblioteca } from "./src/Biblioteca.js";
 
-import {
-    cadastrarLivros,
-    cadastrarUsuarios,
-    fazerEmprestimos
-} from "./tests/testes.js";
+// Funcoes de Teste:
+import { cadastrarLivros, cadastrarUsuarios } from "./tests/cadastro.js";
+import { fazerEmprestimos } from "./tests/operacao.js";
 
 const biblioteca = new Biblioteca();
 
-cadastrarLivros(biblioteca);    // tests/teste.js
-cadastrarUsuarios(biblioteca);  // tests/teste.js
+cadastrarLivros(biblioteca);    // tests/cadastro.js
+cadastrarUsuarios(biblioteca);  // tests/cadastro.js
 
-biblioteca.fazerEmprestimo('A00001', 1);
-
-//fazerEmprestimos(biblioteca); // tests/teste.js
-
+fazerEmprestimos(biblioteca);   // tests/operacao.js
 
 //console.log(biblioteca);
 //

@@ -64,12 +64,3 @@ export function cadastrarLivros(biblioteca) {
         biblioteca.cadastrarLivro(livro);
     }
 }
-
-export function fazerEmprestimos(biblioteca) {
-    // Exemplo de como fazer um empréstimo
-    const emprestimo1 = new Emprestimo('A0001', 1);
-    //biblioteca.fazerEmprestimo(emprestimo1);
-
-    // Aqui você pode adicionar mais lógicas para fazer outros empréstimos
-    // ou manipular o histórico de empréstimos dos usuários.
-}

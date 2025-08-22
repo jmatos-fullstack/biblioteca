@@ -14,6 +14,10 @@ export class Biblioteca {
         return this.#usuarios;
     }
 
+    get listaLivros() {
+        return this.#livros;
+    }
+
     cadastrarUsuario(usuario) {
         const proximoSequencial = ++Biblioteca.#sequencialUsuarios;
         const stringSequencial = '0000' + proximoSequencial;
@@ -26,6 +30,22 @@ export class Biblioteca {
         const proximoSequencial = ++Biblioteca.#sequencialLivros;
         livro.codigo = proximoSequencial;
         this.#livros.push(livro);
+    }
+
+    consultaLivros(disponibilidade) {
+        const livros = this.listaLivros;
+        switch (disponibilidade) {
+            case undefined:
+                return livros;
+            case false:
+            case 0:
+                return livros.filter(livro => livro.disponibilidade === false);
+            case true:
+            case 1:
+                return livros.filter(livro => livro.disponibilidade === true);
+            default:
+                throw new Error('O argumento \'disponbibilidade\' só aceita valores: 0 (ou false), 1 (ou true) e ausente (ou undefined).');
+        }
     }
 
     fazerEmprestimo(matriculaUsuario, codigoLivro) {
