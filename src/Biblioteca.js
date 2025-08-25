@@ -1,12 +1,14 @@
-//import { Usuario } from "./Usuario.js";
 
 export class Biblioteca {
     #usuarios = [];
+    #autores = [];
     #livros = [];
     static #sequencialUsuarios = 0; // Static para ser "catálogo" único
+    static #sequencialAutores = 0;  // Static para ser "catálogo" único
     static #sequencialLivros = 0    // Static para ser "catálogo" único
     constructor() {
         this.#usuarios = [];
+        this.#autores = [];
         this.#livros = [];
     }
 
@@ -24,6 +26,12 @@ export class Biblioteca {
         const novaMatricula = usuario.papel.at(0) + stringSequencial;
         usuario.matricula = novaMatricula;
         this.#usuarios.push(usuario);
+    }
+
+    cadastrarAutor(autor) {
+        const proximoSequencial = ++Biblioteca.#sequencialAutores;
+        autor.codigo = proximoSequencial;
+        this.#autores.push(autor);
     }
 
     cadastrarLivro(livro) {
