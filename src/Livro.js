@@ -1,19 +1,22 @@
 export class Livro {
+    autorSobrenome = '';
+    autorNome = '';
     titulo = '';
-    autor = '';
     disponibilidade = true;
     codigo = 0;
 
-    constructor(titulo, autor, disponibilidade) {
-        if (!titulo || 
-            !autor || 
+    constructor(autorSobrenome, autorNome, titulo, disponibilidade) {
+        if (!autorSobrenome || 
+            !autorNome ||
+            !titulo || 
             !disponibilidade) {
           throw new Error(
-            'Instâncias de \'Livro\' requerem título, autor e disponibilidade.'
+            'Instâncias de \'Livro\' requerem título, nome e sobrenome do autor e disponibilidade.'
         );
         }
+        this.autorSobrenome = autorSobrenome;
+        this.autorNome = autorNome;
         this.titulo = titulo;
-        this.autor = autor;
         this.disponibilidade = disponibilidade;
     }
 }

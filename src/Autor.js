@@ -5,15 +5,15 @@ export class Autor {
     codigo = 0;
 
     constructor(sobrenome, nome, nacionalidade) {
-        if (!titulo || 
-            !autor || 
-            !disponibilidade) {
+        if (!sobrenome || 
+            !nome || 
+            !nacionalidade) {
           throw new Error(
-            'Instâncias de \'Livro\' requerem título, autor e disponibilidade.'
+            'Instâncias de \'Autor\' requerem nome, sobrenome e nacionalidade.'
         );
         }
-        this.titulo = titulo;
-        this.autor = autor;
-        this.disponibilidade = disponibilidade;
+        this.nome = nome;
+        this.sobrenome = sobrenome;
+        this.nacionalidade = nacionalidade;
     }
 }

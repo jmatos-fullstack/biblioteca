@@ -16,6 +16,10 @@ export class Biblioteca {
         return this.#usuarios;
     }
 
+    get listaAutores() {
+        return this.#autores;
+    }
+
     get listaLivros() {
         return this.#livros;
     }
@@ -59,13 +63,13 @@ export class Biblioteca {
     fazerEmprestimo(matriculaUsuario, codigoLivro) {
         //console.log(this.#usuarios);
         const usuario = this.#usuarios.find(usuario => usuario.matricula === matriculaUsuario);
-        console.log(usuario);
+        //console.log(usuario);
         if (!usuario) {
-            throw new Error('Usuário não encontrado.');
+            throw new Error('Usuário não encontrado.', 100);
         }
 
         const livro = this.#livros.find(livro => livro.codigo === codigoLivro);
-        console.log(livro);
+        //console.log(livro);
         if (!livro) {
             throw new Error('Livro não encontrado.');
         }
