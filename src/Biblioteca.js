@@ -65,7 +65,7 @@ export class Biblioteca {
         const usuario = this.#usuarios.find(usuario => usuario.matricula === matriculaUsuario);
         //console.log(usuario);
         if (!usuario) {
-            throw new Error('Usuário não encontrado.', 100);
+            throw new Error('Usuário inválido ou não encontrado.');
         }
 
         const livro = this.#livros.find(livro => livro.codigo === codigoLivro);
@@ -84,6 +84,24 @@ export class Biblioteca {
         // Adiciona o livro ao histórico do usuário
         usuario.historico.push(`Empréstimo do livro: "${livro.titulo}" (Código: ${livro.codigo})`);
         
+    }
+
+    devolverEmprestimo(matriculaUsuario, codigoLivro) {
+        const usuario = this.#usuarios.find(usuario => usuario.matricula === matriculaUsuario);
+        if (!usuario) {
+            throw new Error('Usuário inválido ou não encontrado.');
+        }
+        const livro = this.#livros.find(livro => livro.codigo === codigoLivro);
+        if (!livro) {
+            throw new Error('Livro não encontrado.');
+        }
+        if (livro.disponibilidade) {
+            throw new Error('Livro não está emprestado.');
+        }
+        // Atualiza a disponibilidade do livro
+        livro.disponibilidade = true;
+        // Adiciona a devolução ao histórico do usuário
+        usuario.historico.push(`Devolução do livro: "${livro.titulo}" (Código: ${livro.codigo})`);
     }
     
     // --==-- Relatórios:

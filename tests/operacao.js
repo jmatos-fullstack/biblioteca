@@ -1,40 +1,49 @@
-import { Usuario } from "../src/Usuario.js";
-import { Livro } from "../src/Livro.js";
-
 export function fazerEmprestimos(biblioteca) {
-    // Botar um tryh/catch...
-    // Tenta fazer 50 empréstimos aleatórios...
+    
     const usuarios = biblioteca.listaUsuarios;
+    const livros = biblioteca.listaLivros;
     
-    // const aleatorio = Math.floor(Math.random()*50);
-    // const usuarioAleatorio = usuarios.find(
-    //     usuario => parseInt(usuario.matricula.slice(-5)) === aleatorio
-    // );
-    // //
-    // const livroAleatorio = Math.floor(Math.random()*100);
+    
+    console.log("=-=-=-=---------------------------- R E A L I Z A N D O ----------------------------=-=-=-=\n");
+    console.log('███████╗███╗   ███╗██████╗ ██████╗ ███████╗███████╗████████╗██╗███╗   ███╗ ██████╗ ███████╗');
+    console.log('██╔════╝████╗ ████║██╔══██╗██╔══██╗██╔════╝██╔════╝╚══██╔══╝██║████╗ ████║██╔═══██╗██╔════╝');
+    console.log('█████╗  ██╔████╔██║██████╔╝██████╔╝█████╗  ███████╗   ██║   ██║██╔████╔██║██║   ██║███████╗');
+    console.log('██╔══╝  ██║╚██╔╝██║██╔═══╝ ██╔══██╗██╔══╝  ╚════██║   ██║   ██║██║╚██╔╝██║██║   ██║╚════██║');
+    console.log('███████╗██║ ╚═╝ ██║██║     ██║  ██║███████╗███████║   ██║   ██║██║ ╚═╝ ██║╚██████╔╝███████║');
+    console.log('╚══════╝╚═╝     ╚═╝╚═╝     ╚═╝  ╚═╝╚══════╝╚══════╝   ╚═╝   ╚═╝╚═╝     ╚═╝ ╚═════╝ ╚══════╝');
+    console.log("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+    
+    for (let i=1; i <=100; i++) {
+        const aleatorio1 = Math.floor(Math.random()*52);
+        const usuarioAleatorio = usuarios.find(
+            usuario => parseInt(usuario.matricula.slice(-5)) === aleatorio1
+        );
+        
+        const aleatorio2 = Math.floor(Math.random()*102);
+        const livroAleatorio = livros.find(
+            livro => livro.codigo === aleatorio2
+        );
 
-    // console.log(usuarioAleatorio.matricula);
-    // console.log(livroAleatorio);
-    try {
-        biblioteca.fazerEmprestimo('A00002', 1);
-        console.log('Emprestimo realizado')
-    } catch (error) {
-        console.log('Deu erro')
+        try {
+            biblioteca.fazerEmprestimo(
+                !usuarioAleatorio ? 'X00001' : usuarioAleatorio.matricula, // Forçar erro se não achar usuário
+                !livroAleatorio ? -1 : livroAleatorio.codigo  // Forçar erro se não achar livro
+            );
+            console.log(`\n\x1b[32mEmpréstimo realizado\x1b[0m: ${usuarioAleatorio.nome} [${usuarioAleatorio.matricula}] retirou "${livroAleatorio.titulo}" [Código: ${livroAleatorio.codigo}]`);
+        } catch (error) {
+            console.log('\n\x1b[41m! ! ! -->\x1b[0m Empréstimo NÃO realizado:');
+            if (!usuarioAleatorio || !livroAleatorio) {
+                console.log(' '.repeat(9), error.message);
+            } else {
+                console.log(' '.repeat(9), `Livro "${livroAleatorio.titulo}" [Código: ${livroAleatorio.codigo}] INDISPONÍVEL para ${usuarioAleatorio.nome}.`);
+            }
+        }
     }
-    
-    //biblioteca.fazerEmprestimo(usuarioAleatorio.matricula, livroAleatorio);
-    
-    //   
-
-    // for (let i=1; i <=50; i++) {
-    //     const codigo = ;
-    //     console.log(codigo);
-    
-    // }
-    
-    // biblioteca.fazerEmprestimo('A00001', 1);
-
-    // console.log(biblioteca.consultaLivros());
-
-    // biblioteca.fazerEmprestimo('A00001', 1);
+    console.log("=-\n=-=-=-=---------------------------- F I M ----------------------------=-=-=-=\n=-");
+    console.log("   *");
+    console.log("           *");
+    console.log("                   *");
+    console.log("                           *");
+    console.log("                                   *");
+    console.log("                                           *");
 }

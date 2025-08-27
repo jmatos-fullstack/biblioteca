@@ -127,7 +127,7 @@ export function cadastrarLivros(biblioteca) {
         { titulo: "Oliver Twist", autor: { nome: "Charles", sobrenome: "Dickens" } },
         { titulo: "David Copperfield", autor: { nome: "Charles", sobrenome: "Dickens" } },
         { titulo: "Assassinato no Expresso do Oriente", autor: { nome: "Agatha", sobrenome: "Christie" } },
-        { titulo: "O Caso dos Dez Negrinhos", autor: { nome: "Agatha", sobrenome: "Christie" } },
+        { titulo: "Os Filhos de Anansi", autor: { nome: "Neil", sobrenome: "Gaiman" } },
         { titulo: "O Iluminado", autor: { nome: "Stephen", sobrenome: "King" } },
         { titulo: "It: A Coisa", autor: { nome: "Stephen", sobrenome: "King" } },
         { titulo: "O Sol é Para Todos", autor: { nome: "Harper", sobrenome: "Lee" } },
@@ -206,15 +206,15 @@ export function cadastrarLivros(biblioteca) {
     ];
     const listaAutores = biblioteca.listaAutores;
 
-    console.log("=-=-=-=---- C A D A S T R A N D O ----=-=-=-=\n")
-    console.log('██╗     ██╗██╗   ██╗██████╗  ██████╗ ███████╗')
-    console.log('██║     ██║██║   ██║██╔══██╗██╔═══██╗██╔════╝')
-    console.log('██║     ██║██║   ██║██████╔╝██║   ██║███████╗')
-    console.log('██║     ██║╚██╗ ██╔╝██╔══██╗██║   ██║╚════██║')
-    console.log('███████╗██║ ╚████╔╝ ██║  ██║╚██████╔╝███████║')
-    console.log('╚══════╝╚═╝  ╚═══╝  ╚═╝  ╚═╝ ╚═════╝ ╚══════╝')
+    console.log("=-=-=-=---- C A D A S T R A N D O ----=-=-=-=\n");
+    console.log('██╗     ██╗██╗   ██╗██████╗  ██████╗ ███████╗');
+    console.log('██║     ██║██║   ██║██╔══██╗██╔═══██╗██╔════╝');
+    console.log('██║     ██║██║   ██║██████╔╝██║   ██║███████╗');
+    console.log('██║     ██║╚██╗ ██╔╝██╔══██╗██║   ██║╚════██║');
+    console.log('███████╗██║ ╚████╔╝ ██║  ██║╚██████╔╝███████║');
+    console.log('╚══════╝╚═╝  ╚═══╝  ╚═╝  ╚═╝ ╚═════╝ ╚══════╝');
     // https://www.asciiart.eu/text-to-ascii-art --- ANSI Shadow
-    console.log("- - - - - - - - - - - - - - - - - - - - - - -")
+    console.log("- - - - - - - - - - - - - - - - - - - - - - -");
     
     livros.forEach(l => {
         const x = listaAutores.find(a => a.nome === l.autor.nome && a.sobrenome === l.autor.sobrenome);
@@ -224,7 +224,15 @@ export function cadastrarLivros(biblioteca) {
         } else {
             const novoLivro = new Livro(l.autor.sobrenome, l.autor.nome, l.titulo, true);
             biblioteca.cadastrarLivro(novoLivro);
-            console.log(`Cadastrado: ${novoLivro.autorSobrenome.toUpperCase()}, ${novoLivro.autorNome}. "${novoLivro.titulo}". [Código: ${novoLivro.codigo}]`);
+            console.log(`Cadastrado: ${novoLivro.autorSobrenome.toUpperCase()}, ${novoLivro.autorNome}. "${novoLivro.titulo}" [Código: ${novoLivro.codigo}]`);
         }
     });
+    console.log("=-\n=-=-=-=---- F I M   D O   C A D A S T R O ----=-=-=-=\n=-");
+    console.log("   *");
+    console.log("           *");
+    console.log("                   *");
+    console.log("                           *");
+    console.log("                                   *");
+    console.log("                                           *");
+
 }
