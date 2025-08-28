@@ -35,6 +35,9 @@ export class Biblioteca {
     }
 
     cadastrarAutor(autor) {
+        if (this.#autores.find(a => a.nome === autor.nome && a.sobrenome === autor.sobrenome)) {
+            throw new Error('Usuário já consta da base.');
+        } 
         const proximoSequencial = ++Biblioteca.#sequencialAutores;
         autor.codigo = proximoSequencial;
         this.#autores.push(autor);

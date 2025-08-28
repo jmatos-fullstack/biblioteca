@@ -92,6 +92,9 @@ export function cadastrarUsuarios(biblioteca) {
 }
 
 export function cadastrarAutores(biblioteca) {
+    
+    let count = 0;
+    
     const autores = [
         { nome: "Gabriel", sobrenome: "García Márquez", nacionalidade: "Colombiano" },
         { nome: "Jane", sobrenome: "Austen", nacionalidade: "Britânica" },
@@ -146,7 +149,14 @@ export function cadastrarAutores(biblioteca) {
     ];
 
     autores.forEach(a => {
-        biblioteca.cadastrarAutor(new Autor(a.sobrenome, a.nome, a.nacionalidade));
+        try {
+            const novoAutor = new Autor(a.sobrenome, a.nome, a.nacionalidade);
+            biblioteca.cadastrarAutor(novoAutor);
+            console.log(`#${++count}\tCadastrado: \x1b[32m${novoAutor.sobrenome.toUpperCase()}, ${novoAutor.nome}\x1b[0m. Nacionalidade: \x1b[32m${novoAutor.nacionalidade}\x1b[0m [Código: \x1b[32m${novoAutor.codigo}\x1b[0m]`);
+        } catch (error) {
+            console.log(`\t! ! ! --> NÃO cadastrado: ${a.sobrenome.toUpperCase()}, ${a.nome}.`);
+            console.log('\t',' '.repeat(8), error.message);  
+        } 
     });
 }
 
@@ -267,15 +277,15 @@ export function cadastrarLivros(biblioteca) {
     // https://www.asciiart.eu/text-to-ascii-art --- ANSI Shadow
     console.log("- - - - - - - - - - - - - - - - - - - - - - -");
     
+    let count = 0;
     livros.forEach(l => {
         const x = listaAutores.find(a => a.nome === l.autor.nome && a.sobrenome === l.autor.sobrenome);
-
         if (!x) {
-            console.log(`! ! ! --> NÃO cadastrado: "${l.titulo}"; \n${' '.repeat(10)}Autor não encontrado: ${l.autor.sobrenome.toUpperCase()}, ${l.autor.nome}. `);
+            console.log(`\x1b[41m! ! ! -->\x1b[0m NÃO cadastrado: "${l.titulo}"; \n${' '.repeat(10)}\x1b[33mAutor não encontrado:\x1b[0m ${l.autor.sobrenome.toUpperCase()}, ${l.autor.nome}. `);
         } else {
             const novoLivro = new Livro(l.autor.sobrenome, l.autor.nome, l.titulo, true);
             biblioteca.cadastrarLivro(novoLivro);
-            console.log(`Cadastrado: ${novoLivro.autorSobrenome.toUpperCase()}, ${novoLivro.autorNome}. "${novoLivro.titulo}" [Código: ${novoLivro.codigo}]`);
+            console.log(`#${++count}\tCadastrado: ${novoLivro.autorSobrenome.toUpperCase()}, ${novoLivro.autorNome}. \x1b[32m${novoLivro.titulo}\x1b[0m [Código: \x1b[32m${novoLivro.codigo}\x1b[0m]`);
         }
     });
     console.log("=-\n=-=-=-=---- F I M   D O   C A D A S T R O ----=-=-=-=\n=-");
@@ -285,5 +295,4 @@ export function cadastrarLivros(biblioteca) {
     console.log("                           *");
     console.log("                                   *");
     console.log("                                           *");
-
 }
