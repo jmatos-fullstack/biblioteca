@@ -6,14 +6,17 @@ import {
     cadastrarAutores,
     cadastrarUsuarios,
 } from "./tests/cadastro.js";
+
 import { fazerEmprestimos } from "./tests/operacao.js";
 
 const biblioteca = new Biblioteca();
 
+console.clear(); 
 
+cadastrarUsuarios(biblioteca);  // tests/cadastro.js
 cadastrarAutores(biblioteca);
 cadastrarLivros(biblioteca);    // tests/cadastro.js
-cadastrarUsuarios(biblioteca);  // tests/cadastro.js
+
 //console.log(biblioteca.listaUsuarios);
 
 fazerEmprestimos(biblioteca);   // tests/operacao.js

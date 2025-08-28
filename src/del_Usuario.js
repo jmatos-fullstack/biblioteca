@@ -13,7 +13,7 @@ export class Usuario {
             papel != 'Aluno' &&
             papel != 'Professor' &&
             papel != 'Bibliotecário'
-        ) {
+            ) {
             throw new Error(
                 'O papel do usuário dever ser necessarimente: \'Aluno\' ' +
                 'ou \'Professor\' ou \'Bibliotecário\'.'
@@ -21,10 +21,5 @@ export class Usuario {
         }
         this.nome = nome;
         this.papel = papel;
-    }
-
-    // Método polimórfico:
-    getLimiteEmprestimos() {
-        return 0; // padrão
     }
 }

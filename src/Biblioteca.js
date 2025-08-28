@@ -1,4 +1,3 @@
-
 export class Biblioteca {
     #usuarios = [];
     #autores = [];
@@ -25,6 +24,9 @@ export class Biblioteca {
     }
 
     cadastrarUsuario(usuario) {
+        if (this.#usuarios.find(u => u.nome === usuario.nome)) {
+            throw new Error('Usuário já consta da base.');
+        } 
         const proximoSequencial = ++Biblioteca.#sequencialUsuarios;
         const stringSequencial = '0000' + proximoSequencial;
         const novaMatricula = usuario.papel.at(0) + stringSequencial;

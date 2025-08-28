@@ -3,66 +3,9 @@
 // Veja um exemplo básico:
 
 
-export class Usuario {
-    nome = '';
-    papel = '';
-    matricula = '';
-    historico = [];
 
-    constructor(nome, papel) {
-        if (!nome || !papel) {
-            throw new Error(
-                'Instâncias de \'Usuario\' requerem nome e papel.'
-            );
-        } else if (
-            papel != 'Aluno' &&
-            papel != 'Professor' &&
-            papel != 'Bibliotecário'
-        ) {
-            throw new Error(
-                'O papel do usuário dever ser necessarimente: \'Aluno\' ' +
-                'ou \'Professor\' ou \'Bibliotecário\'.'
-            );
-        }
-        this.nome = nome;
-        this.papel = papel;
-    }
 
-    // Método polimórfico de exemplo
-    getLimiteEmprestimos() {
-        return 3; // padrão
-    }
-}
 
-export class UsuarioAluno extends Usuario {
-    constructor(nome) {
-        super(nome, 'Aluno');
-    }
-
-    getLimiteEmprestimos() {
-        return 3; // Aluno pode pegar até 3 livros
-    }
-}
-
-export class UsuarioProfessor extends Usuario {
-    constructor(nome) {
-        super(nome, 'Professor');
-    }
-
-    getLimiteEmprestimos() {
-        return 7; // Professor pode pegar até 7 livros
-    }
-}
-
-export class UsuarioBibliotecario extends Usuario {
-    constructor(nome) {
-        super(nome, 'Bibliotecário');
-    }
-
-    getLimiteEmprestimos() {
-        return Infinity; // Bibliotecário não tem limite
-    }
-}
 
 // Como usar:
 const aluno = new UsuarioAluno("Harry Potter");

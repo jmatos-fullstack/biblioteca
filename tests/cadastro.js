@@ -1,9 +1,25 @@
 import { Usuario } from "../src/Usuario.js";
 import { Autor } from "../src/Autor.js";
 import { Livro } from "../src/Livro.js";
+import { UsuarioAluno } from "../src/UsuarioAluno.js";
+import { UsuarioProfessor } from "../src/UsuarioProfessor.js";
+import { UsuarioBibliotecario } from "../src/UsuarioBibliotecario.js";
 
 
 export function cadastrarUsuarios(biblioteca) {
+    
+    console.log("=-=-=-=-=-=-=------- C A D A S T R A N D O -------=-=-=-=-=-=-=\n");
+    console.log('██╗   ██╗███████╗██╗   ██╗ █████╗ ██████╗ ██╗ ██████╗ ███████╗');
+    console.log('██║   ██║██╔════╝██║   ██║██╔══██╗██╔══██╗██║██╔═══██╗██╔════╝');
+    console.log('██║   ██║███████╗██║   ██║███████║██████╔╝██║██║   ██║███████╗');
+    console.log('██║   ██║╚════██║██║   ██║██╔══██║██╔══██╗██║██║   ██║╚════██║');
+    console.log('╚██████╔╝███████║╚██████╔╝██║  ██║██║  ██║██║╚██████╔╝███████║');
+    console.log(' ╚═════╝ ╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝ ╚═════╝ ╚══════╝');
+    // https://www.asciiart.eu/text-to-ascii-art --- ANSI Shadow
+    console.log("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+    
+    let count = 0;
+
     // 30 alunos
     const alunos = [
         "Harry Potter", "Luke Skywalker", "Indiana Jones", "Marty McFly", "Forrest Gump",
@@ -11,20 +27,38 @@ export function cadastrarUsuarios(biblioteca) {
         "Hermione Granger", "Ron Weasley", "Rocky Balboa", "James Bond", "Neo Anderson",
         "Ellen Ripley", "Han Solo", "Bilbo Baggins", "Frodo Baggins", "Katniss Everdeen",
         "Diana Prince", "Steve Rogers", "Natasha Romanoff", "Wade Wilson", "Logan Howlett",
-        "Peter Quill", "Gamora Zen", "Arthur Fleck", "Miles Morales", "Shuri Wakanda"
+        "Peter Quill", "Gamora Zen", "Arthur Fleck", "Miles Morales", "Shuri Wakanda",
+        // Repetindo para testar erro de duplicação:
+        "Marty McFly", "Tony Stark", "Bruce Wayne", "Leia Organa", "Hermione Granger"
     ];
     alunos.forEach(nome => {
-        biblioteca.cadastrarUsuario(new Usuario(nome, "Aluno"));
+        try {
+            const novoAluno = new UsuarioAluno(nome);
+            biblioteca.cadastrarUsuario(novoAluno);
+            console.log(`#${++count}\tCadastrado: \x1b[32m${novoAluno.papel}(a)\x1b[0m ${novoAluno.nome} [ Matrícula: \x1b[32m${novoAluno.matricula}\x1b[0m ] --- Limite de empréstimos: \x1b[32m${novoAluno.getLimiteEmprestimos()}\x1b[0m`);
+        } catch (error) {
+            console.log('\t! ! ! --> NÃO cadastrado: ', nome);
+            console.log('\t',' '.repeat(8), error.message);  
+        }
     });
 
     // 10 professores
     const professores = [
         "Morgan Freeman", "Ian McKellen", "Maggie Smith", "Anthony Hopkins", "Judi Dench",
         "Michael Caine", "Helen Mirren", "Patrick Stewart", "Christopher Lee", "Jack Nicholson",
-        "Meryl Streep", "Robert De Niro", "Al Pacino", "Denzel Washington", "Clint Eastwood"
+        "Meryl Streep", "Robert De Niro", "Al Pacino", "Denzel Washington", "Clint Eastwood",
+        // Repetindo para testar erro de duplicação:   
+        "Anthony Hopkins", "Judi Dench", "Michael Caine"
     ];
     professores.forEach(nome => {
-        biblioteca.cadastrarUsuario(new Usuario(nome, "Professor"));
+        try {
+            const novoProfessor = new UsuarioProfessor(nome);
+            biblioteca.cadastrarUsuario(novoProfessor);
+            console.log(`#${++count}\tCadastrado: \x1b[32m${novoProfessor.papel}(a)\x1b[0m ${novoProfessor.nome} [ Matrícula: \x1b[32m${novoProfessor.matricula}\x1b[0m ] --- Limite de empréstimos: \x1b[32m${novoProfessor.getLimiteEmprestimos()}\x1b[0m`);
+        } catch (error) {
+            console.log('\t! ! ! --> NÃO cadastrado: ', nome);
+            console.log('\t',' '.repeat(8), error.message);  
+        }
     });
 
     // 5 bibliotecários
@@ -33,11 +67,28 @@ export function cadastrarUsuarios(biblioteca) {
         "Adele Adkins",
         "Beyoncé Knowles",
         "Elvis Presley",
-        "Michael Jackson"
+        "Michael Jackson",
+        // Repetindo para testar erro de duplicação:
+        "Adele Adkins"
     ];
     bibliotecarios.forEach(nome => {
-        biblioteca.cadastrarUsuario(new Usuario(nome, "Bibliotecário"));
-    });   
+        try {
+            const novoBibliotecario = new UsuarioBibliotecario(nome);
+            biblioteca.cadastrarUsuario(novoBibliotecario);
+            console.log(`#${++count}\tCadastrado: \x1b[32m${novoBibliotecario.papel}(a)\x1b[0m ${novoBibliotecario.nome} [ Matrícula: \x1b[32m${novoBibliotecario.matricula}\x1b[0m ] --- Limite de empréstimos: \x1b[32m${novoBibliotecario.getLimiteEmprestimos()}\x1b[0m`);
+        } catch (error) {
+            console.log('\t! ! ! --> NÃO cadastrado: ', nome);
+            console.log('\t',' '.repeat(8), error.message);  
+        }   
+    });
+    console.log("=-\n=-=-=-=-=-=------ F I M   D O   C A D A S T R O -----=-=-=-=-=-=\n=-");
+    console.log("   *");
+    console.log("           *");
+    console.log("                   *");
+    console.log("                           *");
+    console.log("                                   *");
+    console.log("                                           *");
+
 }
 
 export function cadastrarAutores(biblioteca) {

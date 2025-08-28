@@ -30,6 +30,7 @@ export function fazerEmprestimos(biblioteca) {
                 !livroAleatorio ? -1 : livroAleatorio.codigo  // Forçar erro se não achar livro
             );
             console.log(`\n\x1b[32mEmpréstimo realizado\x1b[0m: ${usuarioAleatorio.nome} [${usuarioAleatorio.matricula}] retirou "${livroAleatorio.titulo}" [Código: ${livroAleatorio.codigo}]`);
+            //console.log('Limite de empréstimos:', usuarioAleatorio.getLimiteEmprestimos());
         } catch (error) {
             console.log('\n\x1b[41m! ! ! -->\x1b[0m Empréstimo NÃO realizado:');
             if (!usuarioAleatorio || !livroAleatorio) {
