@@ -7,20 +7,29 @@ import {
     cadastrarUsuarios,
 } from "./tests/cadastro.js";
 
-import { fazerEmprestimos } from "./tests/operacao.js";
+import { 
+    fazerAlgumasDevolucoes,
+    fazerEmprestimos 
+} from "./tests/operacao.js";
+
+import { 
+    listaHistoricoUsuarios
+} from "./tests/consulta.js";
 
 const biblioteca = new Biblioteca();
 
 console.clear(); 
 
-cadastrarUsuarios(biblioteca);  // tests/cadastro.js
-cadastrarAutores(biblioteca);
-cadastrarLivros(biblioteca);    // tests/cadastro.js
+cadastrarUsuarios(biblioteca);      // tests/cadastro.js
+cadastrarAutores(biblioteca);       // tests/cadastro.js
+cadastrarLivros(biblioteca);        // tests/cadastro.js
 
-//console.log(biblioteca.listaUsuarios);
+fazerEmprestimos(biblioteca);       // tests/operacao.js
+fazerAlgumasDevolucoes(biblioteca); // tests/operacao.js
 
-fazerEmprestimos(biblioteca);   // tests/operacao.js
-console.log(biblioteca);
+listaHistoricoUsuarios(biblioteca); // tests/consulta.js
+
+
 
 
 //

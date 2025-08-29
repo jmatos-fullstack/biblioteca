@@ -8,6 +8,7 @@ import { UsuarioBibliotecario } from "../src/UsuarioBibliotecario.js";
 
 export function cadastrarUsuarios(biblioteca) {
     
+    console.log('\n');
     console.log("=-=-=-=-=-=-=------- C A D A S T R A N D O -------=-=-=-=-=-=-=\n");
     console.log('██╗   ██╗███████╗██╗   ██╗ █████╗ ██████╗ ██╗ ██████╗ ███████╗');
     console.log('██║   ██║██╔════╝██║   ██║██╔══██╗██╔══██╗██║██╔═══██╗██╔════╝');
@@ -37,8 +38,8 @@ export function cadastrarUsuarios(biblioteca) {
             biblioteca.cadastrarUsuario(novoAluno);
             console.log(`#${++count}\tCadastrado: \x1b[32m${novoAluno.papel}(a)\x1b[0m ${novoAluno.nome} [ Matrícula: \x1b[32m${novoAluno.matricula}\x1b[0m ] --- Limite de empréstimos: \x1b[32m${novoAluno.getLimiteEmprestimos()}\x1b[0m`);
         } catch (error) {
-            console.log('\t! ! ! --> NÃO cadastrado: ', nome);
-            console.log('\t',' '.repeat(8), error.message);  
+            console.log('\x1b[41m! ! ! -->\x1b[0m NÃO cadastrado: ', nome);
+            console.log('\x1b[33m',' '.repeat(8), error.message, '\x1b[0m');  
         }
     });
 
@@ -56,8 +57,8 @@ export function cadastrarUsuarios(biblioteca) {
             biblioteca.cadastrarUsuario(novoProfessor);
             console.log(`#${++count}\tCadastrado: \x1b[32m${novoProfessor.papel}(a)\x1b[0m ${novoProfessor.nome} [ Matrícula: \x1b[32m${novoProfessor.matricula}\x1b[0m ] --- Limite de empréstimos: \x1b[32m${novoProfessor.getLimiteEmprestimos()}\x1b[0m`);
         } catch (error) {
-            console.log('\t! ! ! --> NÃO cadastrado: ', nome);
-            console.log('\t',' '.repeat(8), error.message);  
+            console.log('\x1b[41m! ! ! -->\x1b[0m NÃO cadastrado: ', nome);
+            console.log('\x1b[33m',' '.repeat(8), error.message, '\x1b[0m');  
         }
     });
 
@@ -77,8 +78,8 @@ export function cadastrarUsuarios(biblioteca) {
             biblioteca.cadastrarUsuario(novoBibliotecario);
             console.log(`#${++count}\tCadastrado: \x1b[32m${novoBibliotecario.papel}(a)\x1b[0m ${novoBibliotecario.nome} [ Matrícula: \x1b[32m${novoBibliotecario.matricula}\x1b[0m ] --- Limite de empréstimos: \x1b[32m${novoBibliotecario.getLimiteEmprestimos()}\x1b[0m`);
         } catch (error) {
-            console.log('\t! ! ! --> NÃO cadastrado: ', nome);
-            console.log('\t',' '.repeat(8), error.message);  
+            console.log('\x1b[41m! ! ! -->\x1b[0m NÃO cadastrado: ', nome);
+            console.log('\x1b[33m',' '.repeat(8), error.message, '\x1b[0m');  
         }   
     });
     console.log("=-\n=-=-=-=-=-=------ F I M   D O   C A D A S T R O -----=-=-=-=-=-=\n=-");
@@ -93,6 +94,17 @@ export function cadastrarUsuarios(biblioteca) {
 
 export function cadastrarAutores(biblioteca) {
     
+
+    console.log("=-=-=-=-=-=------- C A D A S T R A N D O -------=-=-=-=-=-=\n");
+    console.log(' █████╗ ██╗   ██╗████████╗ ██████╗ ██████╗ ███████╗███████╗');
+    console.log('██╔══██╗██║   ██║╚══██╔══╝██╔═══██╗██╔══██╗██╔════╝██╔════╝');
+    console.log('███████║██║   ██║   ██║   ██║   ██║██████╔╝█████╗  ███████╗');
+    console.log('██╔══██║██║   ██║   ██║   ██║   ██║██╔══██╗██╔══╝  ╚════██║');
+    console.log('██║  ██║╚██████╔╝   ██║   ╚██████╔╝██║  ██║███████╗███████║');
+    console.log('╚═╝  ╚═╝ ╚═════╝    ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚══════╝╚══════╝');
+    // https://www.asciiart.eu/text-to-ascii-art --- ANSI Shadow
+    console.log("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
     let count = 0;
     
     const autores = [
@@ -145,7 +157,11 @@ export function cadastrarAutores(biblioteca) {
         { nome: "José", sobrenome: "de Alencar", nacionalidade: "Brasileiro" },
         { nome: "Graciliano", sobrenome: "Ramos", nacionalidade: "Brasileiro" },
         { nome: "Jorge Luis", sobrenome: "Borges", nacionalidade: "Argentino" },
-        { nome: "Neil", sobrenome: "Gaiman", nacionalidade: "Britânico" }
+        { nome: "Neil", sobrenome: "Gaiman", nacionalidade: "Britânico" },
+        // Repetindo alguns para testar erro de duplicação:
+        { nome: "Machado", sobrenome: "de Assis", nacionalidade: "Brasileiro" },
+        { nome: "Stephen", sobrenome: "King", nacionalidade: "Americano" },
+        { nome: "Carlos", sobrenome: "Drummond de Andrade", nacionalidade: "Brasileiro" }
     ];
 
     autores.forEach(a => {
@@ -154,10 +170,18 @@ export function cadastrarAutores(biblioteca) {
             biblioteca.cadastrarAutor(novoAutor);
             console.log(`#${++count}\tCadastrado: \x1b[32m${novoAutor.sobrenome.toUpperCase()}, ${novoAutor.nome}\x1b[0m. Nacionalidade: \x1b[32m${novoAutor.nacionalidade}\x1b[0m [Código: \x1b[32m${novoAutor.codigo}\x1b[0m]`);
         } catch (error) {
-            console.log(`\t! ! ! --> NÃO cadastrado: ${a.sobrenome.toUpperCase()}, ${a.nome}.`);
-            console.log('\t',' '.repeat(8), error.message);  
+            console.log(`\x1b[41m! ! ! -->\x1b[0m NÃO cadastrado: ${a.sobrenome.toUpperCase()}, ${a.nome}`);
+            console.log('\x1b[33m',' '.repeat(8), error.message,'\x1b[0m');  
         } 
     });
+    console.log("=-\n=-=-=-=-=-=------ F I M   D O   C A D A S T R O -----=-=-=-=-=-=\n=-");
+    console.log("   *");
+    console.log("           *");
+    console.log("                   *");
+    console.log("                           *");
+    console.log("                                   *");
+    console.log("                                           *");
+    
 }
 
 export function cadastrarLivros(biblioteca) {

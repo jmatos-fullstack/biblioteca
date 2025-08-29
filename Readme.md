@@ -1,5 +1,3 @@
-ver: https://stackoverflow.com/questions/14494747/how-to-add-images-to-readme-md-on-github
-
 # 📚 Sistema de Gerenciamento de Biblioteca
 
 ## 1. Objetivo do Projeto
@@ -17,7 +15,7 @@ O projeto contempla:
 ### Pré-requisitos
 
 - Node.js instalado (versão 14+)
-- Navegador moderno (para visualizar a interface HTML)
+
 
 ### Passos para execução
 
@@ -26,12 +24,10 @@ O projeto contempla:
 3. Execute o comando abaixo para iniciar o projeto (irá rodar no navegador):
 
 ```sh
-npm install
-npm start
+node index.js
 ```
-> **Nota:** O comando `npm start` pode ser substituído por abrir o arquivo [index.html](index.html) diretamente no navegador, pois o projeto é client-side.
 
-4. O resultado das operações será exibido no console do navegador (F12 > Console).
+4. O resultado das operações será exibido no console 
 
 ## 3. Estrutura das Classes
 
@@ -42,8 +38,10 @@ O sistema é composto pelas seguintes classes principais:
   - [`UsuarioAluno`](src/UsuarioAluno.js): Limite de 3 empréstimos.
   - [`UsuarioProfessor`](src/UsuarioProfessor.js): Limite de 5 empréstimos.
   - [`UsuarioBibliotecario`](src/UsuarioBibliotecario.js): Limite de 1 empréstimo.
+- [`UsuarioAluno`](src/UsuarioAluno.js), [`UsuarioProfessor`](src/UsuarioProfessor.js) e [`UsuarioBibliotecario`](src/UsuarioBibliotecario.js): herdam de Usuario e sobrescrevem métodos como getLimiteEmprestimos().
 - [`Autor`](src/Autor.js): Representa um autor de livro.
 - [`Livro`](src/Livro.js): Representa um livro, com informações de título, autor e disponibilidade.
+
 
 ### Diagrama de Classes (UML)
 
@@ -51,7 +49,7 @@ O sistema é composto pelas seguintes classes principais:
 
 ## 4. Funções de Teste
 
-As funções de teste estão localizadas em [tests/cadastro.js](tests/cadastro.js) e [tests/operacao.js](tests/operacao.js).
+As funções de teste estão localizadas em [tests/cadastro.js](tests/cadastro.js), [tests/operacao.js](tests/operacao.js) e [tests/consulta.js](tests/operacao.js).
 
 ### Cadastro de Usuários, Autores e Livros
 
@@ -71,6 +69,7 @@ As funções de teste estão localizadas em [tests/cadastro.js](tests/cadastro.j
 - Não permite cadastro de usuários com nomes repetidos.
 - Não permite cadastro de livros sem autor existente.
 - Valida o papel do usuário no momento da criação.
+- Não permite emprestimos acima do limitado nas classes extendidas.
 
 ### Empréstimos Aleatórios
 
@@ -84,23 +83,15 @@ Empréstimo realizado: Tony Stark [A00006] retirou "O Hobbit" [Código: 10]
          Livro "O Hobbit" [Código: 10] INDISPONÍVEL para Tony Stark.
 ```
 
-### Relatórios
+### Devoluções Aleatórias
 
-O método [`gerarRelatorioUsuario`](src/Biblioteca.js) exibe o histórico de empréstimos e devoluções de cada usuário.
+A função [`devolverEmprestimos`](tests/operacao.js) algumas devoluções aleatórias, mas sem devolver todos os livos.
 
-## 5. Imagens de Execução
+### Consulta Final
+A função [`listaHistoricoUsuarios`](tests/operacao.js) exibe o histórico dos usuários que realizaram operações.
 
-### Exemplo de Cadastro
 
-![Exemplo de Cadastro](UML_v1.png)
-
-### Exemplo de Empréstimos
-
-![Exemplo de Empréstimos](UML_v1.png)
-
-> Substitua as imagens acima por capturas reais do console, se desejar.
-
-## 6. Informações Complementares
+## 5. Informações Complementares
 
 - O projeto segue princípios de encapsulamento, herança e polimorfismo.
 - Cada tipo de usuário possui um limite de empréstimos, definido por sobrescrita do método `getLimiteEmprestimos`.

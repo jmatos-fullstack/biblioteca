@@ -68,13 +68,12 @@ export class Biblioteca {
     fazerEmprestimo(matriculaUsuario, codigoLivro) {
         //console.log(this.#usuarios);
         const usuario = this.#usuarios.find(usuario => usuario.matricula === matriculaUsuario);
-        //console.log(usuario);
+        const livro = this.#livros.find(livro => livro.codigo === codigoLivro);
+        
         if (!usuario) {
             throw new Error('Usuário inválido ou não encontrado.');
         }
 
-        const livro = this.#livros.find(livro => livro.codigo === codigoLivro);
-        //console.log(livro);
         if (!livro) {
             throw new Error('Livro não encontrado.');
         }
@@ -87,7 +86,7 @@ export class Biblioteca {
         livro.disponibilidade = false;
 
         // Adiciona o livro ao histórico do usuário
-        usuario.historico.push(`Empréstimo do livro: "${livro.titulo}" (Código: ${livro.codigo})`);
+        usuario.historico.push(`Empréstimo do livro: "${livro.titulo}" [Código: ${livro.codigo}]`);
         
     }
 
@@ -106,7 +105,7 @@ export class Biblioteca {
         // Atualiza a disponibilidade do livro
         livro.disponibilidade = true;
         // Adiciona a devolução ao histórico do usuário
-        usuario.historico.push(`Devolução do livro: "${livro.titulo}" (Código: ${livro.codigo})`);
+        usuario.historico.push(`Devolução do livro: "${livro.titulo}" [Código: ${livro.codigo}]`);
     }
     
     // --==-- Relatórios:
